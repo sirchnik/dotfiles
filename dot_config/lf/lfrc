@@ -1,0 +1,80 @@
+# leave some space at the top and the bottom of the screen
+set scrolloff 5
+
+set drawbox
+
+set mouse
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+map . set hidden!
+
+map D trash
+
+map ~ cd ~
+
+cmd trash %gio trash "$f"
+
+map <m-down> down # Mouse mappings
+map <m-up> up
+
+# define a custom 'rename' command without prompt for overwrite
+# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+# map r push :rename<space>
+
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+cmd touch ${{
+  file=$1
+  if test -e "$file"; then
+    lf -remote "send $id echo File exists: $file"
+    exit 1
+  fi
+  directory=$(dirname "$file")
+  mkdir -p "$directory"
+  touch "$file"
+  lf -remote "send $id select $file"
+}}
+
+cmd mkdir ${{
+  directory=$1
+  if test -e "$directory"; then
+    lf -remote "send $id echo File exists: $directory"
+    exit 1
+  fi
+  mkdir -p "$directory"
+  lf -remote "send $id select $directory"
+}}
+
+# Mappings ─────────────────────────────────────────────────────────────────────
+
+map <c-n> push :touch<space>
+map N push :mkdir<space>

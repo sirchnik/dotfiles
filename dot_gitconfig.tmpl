@@ -1,0 +1,24 @@
+[core]
+	editor = nvim
+	{{- if eq .chezmoi.os "windows" }}
+	autocrlf = true
+	{{- end }}
+	{{- if eq .chezmoi.os "linux" }}
+	autocrlf = input
+	{{- end }}
+[user]
+	name = Niklas Sirch
+	email = {{ .email }}
+[merge]
+    tool = nvim
+
+[mergetool]
+    keepBackup = false
+
+[mergetool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+{{- if eq .chezmoi.os "linux" }}
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+{{- end }}

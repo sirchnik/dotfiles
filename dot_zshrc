@@ -1,0 +1,28 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+ZVM_CURSOR_STYLE_ENABLED=false
+
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/nik/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+#starship prompt
+eval "$(starship init zsh)"
+
+#bindkeys
+bindkey "^R" history-incremental-search-backward
+
+export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/
+
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
+alias compresspdf="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+-dNOPAUSE -dQUIET -dBATCH -sOutputFile="
+

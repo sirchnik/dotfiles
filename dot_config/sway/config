@@ -1,0 +1,36 @@
+### Variables
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term footclient
+set $launcher $term -a ApplicationMenu -e sway-launcher-desktop
+set $AudioMixer $term -a AudioMixer -e pulsemixer
+set $browser chromium --ozone-platform-hint=auto
+set $music chromium --ozone-platform-hint=auto --profile-directory=Default --app-id=cinhimbnkkaeohfgghhklpknlkffjgod
+set $music_id "chrome-cinhimbnkkaeohfgghhklpknlkffjgod"
+
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $white #ffffff
+
+include output.conf
+include behaviour.conf
+include input.conf
+include keybindings.conf
+include ../swayi3common/keybinding.conf
+include autostart.conf
+include style.conf
+include bar.conf
+#xwayland disable
+

@@ -1,0 +1,33 @@
+### Variables
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+set $launcher rofi -show drun
+set $AudioMixer $term --class AudioMixer --title AudioMixer --working-directory $HOME -e pulsemixer
+set $browser chromium 
+set $music $browser --profile-directory=Default --app-id=pjibgclleladliembfgfagdaldikeohf
+set $music_id "crx_pjibgclleladliembfgfagdaldikeohf"
+
+include autostart.conf
+include behaviour.conf
+include ../swayi3common/keybinding.conf
+include keybindings.conf
+
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $white #ffffff
+include style.conf
+include bar.conf
+
