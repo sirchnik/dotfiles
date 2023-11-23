@@ -1,0 +1,105 @@
+{
+	"name": "Vimium C",
+	"@time": "11/22/2023, 10:01:45 PM",
+	"time": 1700686905241,
+	"environment": {
+		"extension": "1.99.994",
+		"platform": "linux",
+		"chromium": 119
+	},
+	"allBrowserUrls": true,
+	"exclusionRules": [
+		{
+			"passKeys": "j k ",
+			"pattern": ":https://duckduckgo.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://play.geforcenow.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://remotedesktop.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://stadia.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://teams.microsoft.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://itch.io/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://luna.amazon.de/"
+		},
+		{
+			"passKeys": "",
+			"pattern": "^https?://localhost:5173/"
+		}
+	],
+	"grabBackFocus": true,
+	"keyupTime": 70,
+	"scrollStepSize": 200,
+	"searchEngines": [
+		"modl: https://moodle.hs-augsburg.de/login Moodle",
+		"dict: https://www.dict.cc/?s=%s blank=https://www.dict.cc/ dict",
+		"arep: https://archlinux.org/packages/?q=%s Archlinux Repository",
+		"aur: https://aur.archlinux.org/packages?O=0&K=%s blank=https://aur.archlinux.org AUR",
+		"metallum: https://www.metal-archives.com/search?searchString=%s&type=band_name",
+		"wpd: https://de.wikipedia.org/w/index.php?go=Artikel&search=%s&title=Spezial%3ASuche&ns0=1",
+		"gg: https://www.google.com/search?q=%s \\",
+		"  www.google.com re=/^(?:\\.[a-z]{2,4})?\\/search\\b.*?[#&?]q=([^#&]*)/i\\",
+		"  blank=https://www.google.com/ Google",
+		"dd: https://duckduckgo.com/?q=%s DuckDuckGo",
+		"",
+		"aw: https://wiki.archlinux.org/index.php?search=%s \\",
+		"  Archlinux Wiki",
+		"maps: https://www.google.com/maps?q=%s \\",
+		"  blank=https://www.google.com/maps Google Maps",
+		"",
+		"yt: https://www.youtube.com/results?search_query=%s \\",
+		"  blank=https://www.youtube.com/ YouTube",
+		"wp: https://www.wikipedia.org/w/index.php?search=%s Wikipedia",
+		"",
+		"",
+		"amz: https://www.amazon.de/s?k=%s \\",
+		"  blank=https://www.amazon.de/ Amazon",
+		"idealo: https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=%s \\",
+		"  blank=https://www.idealo.de/ Idealo",
+		"",
+		"\\:i: vimium://sed/s/^//,lower\\ $S re= Lower case",
+		"v.m: vimium://math\\ $S re= Calculate",
+		"v.p: vimium://parse\\ $S re= Redo Search",
+		"gh: https://github.com/search?q=$s \\",
+		"  blank=https://github.com/ GitHub Repo",
+		""
+	],
+	"searchUrl": "https://www.google.com/search?q=$s Google",
+	"smoothScroll": false,
+	"userDefinedCss": [
+		"/* #omni */",
+		"",
+		"@media (prefers-color-scheme: dark) {",
+		"  #bar{background:#333;border-color:#666;}#list{background:#000;}",
+		"  #input{background:#000;border-color:#171717;box-shadow:0 0 1.5px #ccc;color:#ccc;}",
+		"  #toolbar{color:#666;opacity:1;}.button:hover{background:#000;color:#999;}",
+		"  .item{border-color:#333;}.item:hover{background-color:#101e32;}",
+		"  .p{border-color:#1b3355;}.item.s{background-color:#1b3355;}",
+		"  .top,match{color:#c4c4c4;}a{color:#97aace;}",
+		"}",
+		""
+	],
+	"vimSync": true,
+	"vomnibarOptions": {
+		"actions": "",
+		"maxMatches": 10,
+		"queryInterval": 333,
+		"sizes": "77,1,44,0.8",
+		"styles": "light"
+	}
+}

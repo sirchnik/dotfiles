@@ -37,9 +37,9 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     setup = {
-        matchup = {
-            enable = true,
-        }
+        --matchup = {
+         --   enable = true,
+        --}
     }
 },
 {
@@ -55,8 +55,7 @@ require("lazy").setup({
     "andymass/vim-matchup",
     event = "VeryLazy",
     config = function()
-	vim.cmd([[hi MatchParen guibg=none gui=bold]])
-	vim.cmd([[hi MatchParenCur guibg=none gui=none]])
+	vim.g.matchup_matchparen_enabled = 0
     end
 },
 {
