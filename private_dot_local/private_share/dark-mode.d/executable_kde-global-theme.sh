@@ -8,4 +8,4 @@
 # Reference: https://bugs.kde.org/show_bug.cgi?id=460643
 
 sleep 1
-lookandfeeltool -platform offscreen --apply "Dark"
+lookandfeeltool -platform offscreen --apply "com.sirniklax.my-dark.desktop"

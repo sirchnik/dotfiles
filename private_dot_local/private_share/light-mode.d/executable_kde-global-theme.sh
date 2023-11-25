@@ -8,4 +8,4 @@
 # Reference: https://bugs.kde.org/show_bug.cgi?id=460643
 
 sleep 1
-lookandfeeltool -platform offscreen --apply "Light"
+lookandfeeltool -platform offscreen --apply "com.sirniklax.my-light.desktop"

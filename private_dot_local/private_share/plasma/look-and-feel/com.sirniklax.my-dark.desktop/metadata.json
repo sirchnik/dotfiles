@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Niklas Sirch"
+            }
+        ],
+        "Category": "",
+        "Description": "My Dark",
+        "Id": "com.sirniklax.my-dark.desktop",
+        "License": "GPLv2+",
+        "Name": "My Dark",
+        "ServiceTypes": [
+            "Plasma/LookAndFeel"
+        ],
+        "Version": "2.0"
+    },
+    "X-Plasma-MainScript": "defaults"
+}
