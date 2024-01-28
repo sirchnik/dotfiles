@@ -21,6 +21,9 @@ bindkey "^R" history-incremental-search-backward
 
 export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/
 
+alias vim="nvim"
+alias lf="yazi"
+alias zayi="yazi"
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 alias compresspdf="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
