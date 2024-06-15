@@ -58,22 +58,22 @@ require("lazy").setup({
 	vim.g.matchup_matchparen_enabled = 0
     end
 },
-{
-	"gbprod/yanky.nvim",
-	opts = {
-		system_clipboard = {
-			sync_with_ring = false,
-		},
-	},
-	keys = {
-		{ mode = { "n", "x" }, "p", "<Plug>(YankyPutAfter)" },
-		{ mode = { "n", "x" }, "P", "<Plug>(YankyPutBefore)" },
-		{ mode = { "n", "x" }, "gp", "<Plug>(YankyGPutAfter)" },
-		{ mode = { "n", "x" }, "gP", "<Plug>(YankyGPutBefore)" },
-		{ mode = "n", "<c-n>", "<Plug>(YankyCycleForward)" },
-		{ mode = "n", "<c-p>", "<Plug>(YankyCycleBackward)" },
-	},
-},
+--{
+--	"gbprod/yanky.nvim",
+--	opts = {
+--		system_clipboard = {
+--			sync_with_ring = false,
+--		},
+--	},
+--	keys = {
+--		{ mode = { "n", "x" }, "p", "<Plug>(YankyPutAfter)" },
+--		{ mode = { "n", "x" }, "P", "<Plug>(YankyPutBefore)" },
+--		{ mode = { "n", "x" }, "gp", "<Plug>(YankyGPutAfter)" },
+--		{ mode = { "n", "x" }, "gP", "<Plug>(YankyGPutBefore)" },
+--		{ mode = "n", "<c-n>", "<Plug>(YankyCycleForward)" },
+--		{ mode = "n", "<c-p>", "<Plug>(YankyCycleBackward)" },
+--	},
+--},
 })
 
 
