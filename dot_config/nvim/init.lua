@@ -1,4 +1,5 @@
 vim.o.clipboard = 'unnamedplus'
+vim.wo.number = true
 vim.o.scrolloff = 10
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -10,6 +11,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+{
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+	      require("tokyonight").setup({
+          transparent = true,
+    })
+  end
+},
 --{
 --   "folke/flash.nvim",
 --   event = "VeryLazy",
@@ -58,23 +70,35 @@ require("lazy").setup({
 	vim.g.matchup_matchparen_enabled = 0
     end
 },
+--{
+--	"gbprod/yanky.nvim",
+--	opts = {
+--		system_clipboard = {
+--			sync_with_ring = false,
+--		},
+--	},
+--	keys = {
+--		{ mode = { "n", "x" }, "p", "<Plug>(YankyPutAfter)" },
+--		{ mode = { "n", "x" }, "P", "<Plug>(YankyPutBefore)" },
+--		{ mode = { "n", "x" }, "gp", "<Plug>(YankyGPutAfter)" },
+--		{ mode = { "n", "x" }, "gP", "<Plug>(YankyGPutBefore)" },
+--		{ mode = "n", "<c-n>", "<Plug>(YankyCycleForward)" },
+--		{ mode = "n", "<c-p>", "<Plug>(YankyCycleBackward)" },
+--	},
+--},
 {
-	"gbprod/yanky.nvim",
-	opts = {
-		system_clipboard = {
-			sync_with_ring = false,
-		},
-	},
-	keys = {
-		{ mode = { "n", "x" }, "p", "<Plug>(YankyPutAfter)" },
-		{ mode = { "n", "x" }, "P", "<Plug>(YankyPutBefore)" },
-		{ mode = { "n", "x" }, "gp", "<Plug>(YankyGPutAfter)" },
-		{ mode = { "n", "x" }, "gP", "<Plug>(YankyGPutBefore)" },
-		{ mode = "n", "<c-n>", "<Plug>(YankyCycleForward)" },
-		{ mode = "n", "<c-p>", "<Plug>(YankyCycleBackward)" },
-	},
+  '4e554c4c/darkman.nvim',
+  build = 'go build -o bin/darkman.nvim',
+  dependencies = { "folke/tokyonight.nvim" },
+  config = function()
+    require 'darkman'.setup(
+	{
+	  change_background = true,
+	  send_user_event = false,
+	  colorscheme = { dark = "tokyonight", light = "tokyonight-day" }
+	})
+  end,
 },
 })
-
 
 
