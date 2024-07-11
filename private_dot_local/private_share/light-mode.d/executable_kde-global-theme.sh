@@ -7,5 +7,4 @@
 # Since Plasma 5.26 the lookandfeeltool does not work anymore without "faking" the screen.
 # Reference: https://bugs.kde.org/show_bug.cgi?id=460643
 
-sleep 1
 lookandfeeltool -platform offscreen --apply "com.sirniklax.my-light.desktop"

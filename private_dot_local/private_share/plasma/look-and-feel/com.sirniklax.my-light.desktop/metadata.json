@@ -1,19 +1,18 @@
 {
+    "KPackageStructure": "Plasma/LookAndFeel",
     "KPlugin": {
         "Authors": [
             {
-                "Name": "Niklas Sirch"
+                "Name": "Niklas Sirch",
+                "Email": "mail@abc.com"
             }
         ],
         "Category": "",
         "Description": "My Light",
         "Id": "com.sirniklax.my-light.desktop",
         "License": "GPLv2+",
-        "Name": "My Light",
-        "ServiceTypes": [
-            "Plasma/LookAndFeel"
-        ],
-        "Version": "2.0"
-    },
-    "X-Plasma-MainScript": "defaults"
+	"Website": "github.com",
+        "Name": "My Light"
+    }
 }
+

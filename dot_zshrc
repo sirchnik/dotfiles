@@ -20,12 +20,38 @@ eval "$(starship init zsh)"
 bindkey "^R" history-incremental-search-backward
 
 export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/
+export NODE_ENV=development
 
 alias vim="nvim"
 alias lf="yazi"
 alias zayi="yazi"
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
-alias compresspdf="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
--dNOPAUSE -dQUIET -dBATCH -sOutputFile="
+compresspdf() {
+    if [[ $# -ne 2 ]]; then
+        echo "Usage: compresspdf <input_pdf> <output_pdf>"
+        return 1
+    fi
+    
+    local input="$1"
+    local output="$2"
+    
+    gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input"
+}
 
+eval "$(zoxide init zsh)"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+. "$HOME/.cargo/env"

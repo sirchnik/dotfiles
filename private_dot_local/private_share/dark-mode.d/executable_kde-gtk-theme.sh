@@ -5,3 +5,4 @@
 # Reference: https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
 
 dbus-send --session --dest=org.kde.GtkConfig --type=method_call /GtkConfig org.kde.GtkConfig.setGtkTheme "string:Breeze-dark-gtk"
+

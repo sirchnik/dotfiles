@@ -5,7 +5,7 @@ widgetStyle=Breeze
 ColorScheme=BreezeLight
 
 [kdeglobals][Icons]
-Theme=breeze-light
+Theme=breeze
 
 [plasmarc][Theme]
 name=default
@@ -26,4 +26,5 @@ LayoutName=org.kde.breeze.desktop
 library=org.kde.bismuth.decoration
 
 [KSplash]
-Theme=org.kde.Breeze
+Theme=None
+
