@@ -1,4 +1,10 @@
 # Lines configured by zsh-newuser-install
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -19,7 +25,7 @@ eval "$(starship init zsh)"
 #bindkeys
 bindkey "^R" history-incremental-search-backward
 
-export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/
+export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/:$HOME/go/bin/
 export NODE_ENV=development
 
 alias vim="nvim"
@@ -55,3 +61,9 @@ function yy() {
 }
 
 . "$HOME/.cargo/env"
+
+source "$HOME/.local/share/completions/kind.sh"
+source "$HOME/.local/share/completions/helm.zsh"
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export K6_WEB_DASHBOARD=true
