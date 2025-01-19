@@ -14,7 +14,8 @@ name=default
 Image=Next
 
 [kcminputrc][Mouse]
-cursorTheme=adwaita
+cursorTheme=breeze_cursors
+cursorSize=30
 
 [kwinrc][WindowSwitcher]
 LayoutName=org.kde.breeze.desktop

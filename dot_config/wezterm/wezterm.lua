@@ -38,16 +38,22 @@ for i = 1, 9 do
   })
 end
 
-if get_os() == "win" then
-  config.default_prog = { "nu.exe" }
-end
-
 local mux = wezterm.mux
 
 wezterm.on('gui-startup', function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
+
+config.skip_close_confirmation_for_processes_named =  {
+	'ssh',
+	'nu',
+	'carapace',
+	'starship',
+	'bash',
+	'zsh',
+	'btop'
+}
 
 config.colors = {
   tab_bar = {
