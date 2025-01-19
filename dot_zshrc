@@ -1,4 +1,48 @@
-# Lines configured by zsh-newuser-install
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+### Begin Plugins
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+
+zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+zinit load starship/starship
+
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+zinit ice wait="0a" lucid atload="_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait="0c" lucid atinit="zpcompinit;zpcdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice as'program' id-as'carapace' from'gh-r' atload" \
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m';\
+  source <(carapace _carapace);"
+zinit light carapace-sh/carapace-bin
+
+### End Plugins
+
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -8,29 +52,8 @@ setopt HIST_SAVE_NO_DUPS
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-ZVM_CURSOR_STYLE_ENABLED=false
 
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/nik/.zshrc'
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-#starship prompt
-eval "$(starship init zsh)"
-
-#bindkeys
-bindkey "^R" history-incremental-search-backward
-
-export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/:$HOME/go/bin/
-export NODE_ENV=development
-
-alias vim="nvim"
-alias lf="yazi"
-alias zayi="yazi"
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 compresspdf() {
@@ -44,26 +67,16 @@ compresspdf() {
     
     gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input"
 }
-
-eval "$(zoxide init zsh)"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
 
+### Begin Other Installers
+
 . "$HOME/.cargo/env"
-
-source "$HOME/.local/share/completions/kind.sh"
-source "$HOME/.local/share/completions/helm.zsh"
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-export K6_WEB_DASHBOARD=true
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
