@@ -23,6 +23,11 @@
        selected = wincred
 {{- end }}
 {{- if eq .chezmoi.os "linux" }}
+{{   if eq .chezmoi.osRelease.id "arch" }}
 [credential]
 	helper = /usr/lib/git-core/git-credential-libsecret
+{{   else }}
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+{{   end }}
 {{- end }}

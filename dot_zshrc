@@ -75,6 +75,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+alias chezmoi-re-add-all='chezmoi re-add $(chezmoi managed --include=dirs)'
 
 ### Begin Other Installers
 
