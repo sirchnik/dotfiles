@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Browser Chooser
+GenericName=Browser Chooser
+Comment=Select a browser to access the Internet
+Categories=Network;WebBrowser;
+Icon=browser
+Type=Application
+Exec=python $HOME/.local/bin/browser-chooser.py %u
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
+
