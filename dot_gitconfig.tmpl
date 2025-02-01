@@ -15,6 +15,10 @@
 [mergetool]
     keepBackup = false
 
+[help]
+	autocorrect = prompt
+
+
 [mergetool "nvim"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
