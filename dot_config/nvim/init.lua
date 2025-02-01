@@ -51,21 +51,11 @@ local plugins = {
             vim.g.matchup_matchparen_enabled = 0
         end
     },
+    {
+      "f-person/auto-dark-mode.nvim",
+      opts = {
+      }
+    }
 }
-
-if not is_win then
-    table.insert(plugins, {
-        '4e554c4c/darkman.nvim',
-        build = 'go build -o bin/darkman.nvim',
-        dependencies = { "folke/tokyonight.nvim" },
-        config = function()
-            require 'darkman'.setup({
-                change_background = true,
-                send_user_event = false,
-                colorscheme = { dark = "tokyonight", light = "tokyonight-day" }
-            })
-        end,
-    })
-end
 
 require("lazy").setup(plugins)

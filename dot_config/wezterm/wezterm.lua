@@ -6,13 +6,6 @@ function get_os()
     return package.config:sub(1,1) == "\\" and "win" or "unix"
 end
 
-function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
-end
-
 function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
     return 'Night Owl (Gogh)'
@@ -24,10 +17,20 @@ end
 config.font =  wezterm.font_with_fallback {'IntoneMono NF', 'Symbols Nerd Font', 'Noto Sans Symbols'}
 config.window_background_opacity = 0.9
 config.color_scheme = 'Night Owl (Gogh)'
-config.color_scheme = scheme_for_appearance(get_appearance())
+
+wezterm.on('window-config-reloaded', function(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  local appearance = window:get_appearance()
+  local scheme = scheme_for_appearance(appearance)
+  if overrides.color_scheme ~= scheme then
+    overrides.color_scheme = scheme
+    window:set_config_overrides(overrides)
+  end
+end)
 config.window_decorations = "RESIZE"
 config.check_for_updates = false
 config.enable_scroll_bar = true
+min_scroll_bar_height = "1cell"
 
 config.keys = {}
 for i = 1, 9 do
