@@ -79,5 +79,12 @@ alias chezmoi-re-add-all='chezmoi re-add $(chezmoi managed --include=dirs)'
 
 ### Begin Other Installers
 
-. "$HOME/.cargo/env"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if grep -qi "arch" /etc/os-release; then
+    . "$HOME/.cargo/env"
+    export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/:$HOME/go/bin/
+    export PATH=$PATH:/home/nik/.spicetify
+elif grep -qi "ubuntu" /etc/os-release; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+else
+fi
+
