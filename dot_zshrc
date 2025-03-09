@@ -56,6 +56,8 @@ SAVEHIST=1000
 
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
+alias ip-pub-4="curl -4 ifconfig.me"
+alias ip-pub-6="curl -6 ifconfig.me"
 compresspdf() {
     if [[ $# -ne 2 ]]; then
         echo "Usage: compresspdf <input_pdf> <output_pdf>"
