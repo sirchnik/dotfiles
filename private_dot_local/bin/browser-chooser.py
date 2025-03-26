@@ -43,9 +43,6 @@ def get_browser_command(url, config):
     raise ValueError('No matching browser for the given URL.')
 
 def main():
-    with open("/home/nik/demo.abc", "a") as f:
-        f.write(",".join(sys.argv) + "\n") 
-    
     url = sys.argv[1]
     try:
         config = load_config()
