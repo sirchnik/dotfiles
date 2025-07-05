@@ -13,6 +13,7 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 ### Begin Plugins
+
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
@@ -36,12 +37,10 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait="0c" lucid atinit="zpcompinit;zpcdreplay"
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-zinit ice as'program' id-as'carapace' from'gh-r' atload" \
-  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m';\
-  source <(carapace _carapace);"
-zinit light carapace-sh/carapace-bin
-
 ### End Plugins
+
+autoload -Uz compinit
+compinit
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -69,6 +68,15 @@ compresspdf() {
     
     gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$output" "$input"
 }
+# https://stackoverflow.com/a/42544963
+function git-large-files() {
+	git rev-list --objects --all --missing=print |
+	  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+	  sed -n 's/^blob //p' |
+	  sort --numeric-sort --key=2 |
+	  cut -c 1-12,41- |
+	  $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+}
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
         yazi "$@" --cwd-file="$tmp"
@@ -84,7 +92,8 @@ alias chezmoi-re-add-all='chezmoi re-add $(chezmoi managed --include=dirs)'
 if grep -qi "arch" /etc/os-release; then
     . "$HOME/.cargo/env"
     export PATH=$PATH:$HOME/.local/bin/:$HOME/.cargo/bin/:$HOME/.dotnet/tools/:$HOME/go/bin/
-    export PATH=$PATH:/home/nik/.spicetify
+    export PATH=$PATH:$HOME.spicetify:/usr/local/texlive/2025/bin/x86_64-linux
+    export PATH=$PATH:$HOME/.npm/global/bin
 elif grep -qi "ubuntu" /etc/os-release; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 else
