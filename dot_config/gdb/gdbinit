@@ -1,0 +1,28 @@
+# Automatically show the current instruction at every stop
+# display/i $pc
+
+
+source ~/.config/gdb/dump-regs.py
+
+source ~/.config/gdb/arm-fault-info.py
+source ~/.config/gdb/arm-mpu.py
+source ~/.config/gdb/arm-nvic.py
+source ~/.config/gdb/arm-info.py
+source ~/.config/gdb/arm-sau.py
+source ~/.config/gdb/arm-stack-dump.py
+source ~/.config/gdb/profile-cycles.py
+source ~/.config/gdb/measure-cpi.py
+
+
+
+define arm-mode 
+    if ($ipsr & 0x1FF) == 0
+        printf "Processor Mode: THREAD MODE\n"
+    else
+        printf "Processor Mode: HANDLER MODE (Exception #%d)\n", ($ipsr & 0x1FF)
+    end
+end
+
+document show_mode
+    Displays whether the ARMv8-M processor is in Thread or Handler mode.
+end

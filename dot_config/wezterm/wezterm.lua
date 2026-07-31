@@ -17,6 +17,7 @@ end
 config.font =  wezterm.font_with_fallback {'IntoneMono NF', 'Symbols Nerd Font', 'Noto Sans Symbols'}
 config.window_background_opacity = 0.9
 config.color_scheme = 'Night Owl (Gogh)'
+config.warn_about_missing_glyphs = false
 
 wezterm.on('window-config-reloaded', function(window, pane)
   local overrides = window:get_config_overrides() or {}
@@ -32,7 +33,13 @@ config.check_for_updates = false
 config.enable_scroll_bar = true
 min_scroll_bar_height = "1cell"
 
-config.keys = {}
+config.keys = {
+    {
+      key = 'F',
+      mods = 'CTRL|SHIFT',
+      action = wezterm.action.Search({ CaseInSensitiveString = '' })
+    }
+}
 for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
@@ -55,7 +62,8 @@ config.skip_close_confirmation_for_processes_named =  {
 	'starship',
 	'bash',
 	'zsh',
-	'btop'
+	'btop',
+	'picocom'
 }
 
 config.colors = {
